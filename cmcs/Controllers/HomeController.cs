@@ -94,7 +94,7 @@ namespace cmcs.Controllers
                 .OrderByDescending(c => c.SubmittedDate)
                 .ToList();
 
-            // Add ViewBag values for statistics and debug informat
+            // Add ViewBag values for statistics and debug inform
             ViewBag.AllClaimsCount = _context.Claims.Count();
             ViewBag.PendingClaimsCount = pendingClaims.Count;
             ViewBag.AllClaims = _context.Claims
