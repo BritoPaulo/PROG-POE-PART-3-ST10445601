@@ -13,7 +13,7 @@ builder.Services.AddScoped<ClaimValidationService>();
 
 var app = builder.Build();
 
-// DEVELOPMENT: Force database recreation with latest sche
+// DEVELOPMENT: Force database recreation with latest 
 if (app.Environment.IsDevelopment())
 {
     using (var scope = app.Services.CreateScope())
