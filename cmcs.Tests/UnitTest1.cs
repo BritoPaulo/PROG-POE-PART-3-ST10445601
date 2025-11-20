@@ -75,7 +75,7 @@ namespace cmcs.Tests
             var savedClaim = context.Claims.First();
             Assert.Equal("Test Lecturer", savedClaim.LecturerName);
             Assert.Equal("Submitted", savedClaim.Status);
-            Assert.Equal(12150m, savedClaim.TotalAmount); // 40.5 * 300
+            Assert.Equal(12150m, savedClaim.TotalAmount); // calculation: 40.5 * 300
         }
 
         [Fact]
