@@ -1,0 +1,79 @@
+﻿@model List<cmcs.Models.Claim>
+@{
+    ViewData["Title"] = "Lecturer Dashboard";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Lecturer Dashboard</h2>
+    <a asp-action="SubmitClaim" class="btn btn-success">+ Submit New Claim</a>
+</div>
+
+<!-- Success Message -->
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>✅ Success!</strong> @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        You haven't submitted any claims yet. <a asp-action="SubmitClaim" class="alert-link">Submit your first claim</a>.
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="col-12">
+            <h4>My Recent Claims</h4>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Claim ID</th>
+                        <th>Month</th>
+                        <th>Hours</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th>Submitted</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var claim in Model)
+                    {
+                        <tr>
+                            <td>@claim.ClaimId</td>
+                            <td>@claim.ClaimMonth.ToString("MMMM yyyy")</td>
+                            <td>@claim.TotalHours.ToString("N2")</td>
+                            <td>R @claim.TotalAmount.ToString("N2")</td>
+                            <td>
+                                @if (claim.Status == "Submitted")
+                                {
+                                    <span class="badge bg-info">@claim.Status</span>
+                                }
+                                else if (claim.Status == "Under Review")
+                                {
+                                    <span class="badge bg-warning">@claim.Status</span>
+                                }
+                                else if (claim.Status == "Approved")
+                                {
+                                    <span class="badge bg-success">@claim.Status</span>
+                                }
+                                else if (claim.Status == "Rejected")
+                                {
+                                    <span class="badge bg-danger">@claim.Status</span>
+                                }
+                            </td>
+                            <td>@claim.SubmittedDate.ToString("yyyy-MM-dd")</td>
+                            <td>
+                                <a asp-action="TrackClaim" asp-route-id="@claim.ClaimId" class="btn btn-sm btn-info">Track</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
