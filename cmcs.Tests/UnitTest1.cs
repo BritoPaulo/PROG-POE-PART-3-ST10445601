@@ -123,7 +123,7 @@ namespace cmcs.Tests
             var claim = new Claim();
 
             // Assert
-            Assert.Equal("Submitted", claim.Status);
+            Assert.Equal("Claim Submitted", claim.Status);
         }
 
         [Fact]
