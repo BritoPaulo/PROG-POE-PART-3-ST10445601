@@ -46,8 +46,8 @@ if (app.Environment.IsDevelopment())
                     TotalHours = 35.5m,
                     RatePerHour = 320.0m,
                     Notes = "February lectures and marking",
-                    Status = "Under Review",
-                    WorkflowStatus = "Under Review",
+                    Status = "Claim Under Review",
+                    WorkflowStatus = "Claim Under Review",
                     LecturerName = "Demo Lecturer",
                     LecturerEmail = "lecturer@iie.com",
                     SubmittedDate = DateTime.Now.AddDays(-5)
