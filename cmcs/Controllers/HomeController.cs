@@ -63,7 +63,7 @@ namespace cmcs.Controllers
             {
                 var pendingClaims = _context.Claims
                     .Include(c => c.SupportingDocuments)
-                    .Where(c => c.Status == "Submitted" || c.Status == "Under Review")
+                    .Where(c => c.Status == "Claim Submitted" || c.Status == "Under Review")
                     .OrderByDescending(c => c.SubmittedDate)
                     .ToList();
 
